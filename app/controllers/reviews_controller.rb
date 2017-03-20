@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
 	before_action :find_play
+
 	def new
 		@review = Review.new
 	end 
@@ -9,7 +10,7 @@ class ReviewsController < ApplicationController
 		
 		@review = Review.new(review_params)
 		@review.play_id = @play.id
-		@review.user_id = current_user.id
+		#@review.user_id = current_user.id # Why is this not working? 
 
 		if @review.save
 			redirect_to play_path(@play)
